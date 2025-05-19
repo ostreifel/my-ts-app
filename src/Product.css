@@ -1,7 +1,17 @@
 .Product { 
   background-color: #383a3d;
-  width: 200px;
+  border-radius: 20px;
+  color: white;
+  text-decoration: none;
   height: 300px;
   padding: 20px;
-  border-radius: 20px;
+  width: 200px;
+}
+
+.Product:hover, .Product:focus {
+  background-color: #92969c;
+}
+
+.ProductThumbnail {
+  height: 150px;
 }

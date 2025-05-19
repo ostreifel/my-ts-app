@@ -3,7 +3,11 @@ import './Product.css';
 
 function Product({product}: {product: ProductData}) {
   return (
-    <div className="Product">{product.title}</div>
+    // TODO add an href here
+    <a className="Product" href={`/product/${encodeURIComponent(product.id)}`}>
+        <h2>{product.title}</h2>
+        <img className="ProductThumbnail" src={product.thumbnail} />
+    </a>
   )
 }
 export default Product;
