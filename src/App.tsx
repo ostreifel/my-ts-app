@@ -1,28 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
+import {Product} from './schema'
+
 import './App.css';
 
-// TODO move this interface to its own file.
-interface Product {
-  id: string;
-  title: string;
-  description: string;
-  category: string;
-  price: number;
-  discountPercentage: number;
-  rating: number;
-  stock: number;
-  tags: string[];
-  brand: string;
-  sku: string;
-  weight: number;
-  dimensions: {
-    width: number;
-    height: number;
-    depth: number;
-  }
-  // TODO the other fields
-}
+
 
 function App() {
   const [products, setProducts] = useState<Product[]|null>(null);
