@@ -1,14 +1,13 @@
-.App {
-  text-align: center;
-  padding: 20px;
-
-}
-
 .ProductList {
-  color: white;
+  justify-content: center;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+}
+
+.Products {
+  padding: 20px;
+
 }
 
 
