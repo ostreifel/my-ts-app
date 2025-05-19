@@ -1,18 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
-import {Product} from './schema'
+import {ProductList} from './schema'
+import Product from './Product';
 
 import './App.css';
 
 
 
 function App() {
-  const [products, setProducts] = useState<Product[]|null>(null);
+  const [productList, setProductList] = useState<ProductList|null>(null);
   useEffect(() => {
     fetch('https://dummyjson.com/products')
       .then(response => response.json())
       .then((response) => {
-        setProducts(response.products)
+        setProductList(response)
       });
   }, [])
   return (
@@ -22,11 +23,8 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
-        {products ? products.map(product => 
-          <div>
-            {product.title}
-            {product.description}
-          </div>
+        {productList ? productList.products.map(product => 
+          <Product product={product} />
         ): <p>Loading...</p>}
         <a
           className="App-link"
