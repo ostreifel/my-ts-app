@@ -5,13 +5,13 @@ import ProductCard from './ProductCard/ProductCard';
 
 import './ProductList.css';
 
-const PAGE_SIZE = 30;
+const PAGE_SIZE = 15;
 
 function getUrl(skip: number) {
   if (!skip) {
-    return 'https://dummyjson.com/products';
+    return `https://dummyjson.com/products?limit=${PAGE_SIZE}`;
   }
-  return `https://dummyjson.com/products?skip=${skip}`;
+  return `https://dummyjson.com/products?skip=${skip}&limit=${PAGE_SIZE}`;
 }
 
 function getNextPageUrl(productList: ProductListData): string {
@@ -53,8 +53,8 @@ function ProductList() {
           <ProductCard key={product.id} product={product} />
         )}
         <div className="PageButtons">
-          {hasPreviousPage(productList) && <a href={getPreviousPageUrl(productList)}>Previous Page</a>}
-          {hasNextPage(productList) && <a href={getNextPageUrl(productList)}>Next Page</a>}
+          <a className={hasPreviousPage(productList) ? '': 'HidePageButton'} href={getPreviousPageUrl(productList)}>Previous Page</a>
+          <a className={hasNextPage(productList) ? '' : 'HidePageButton'} href={getNextPageUrl(productList)}>Next Page</a>
         </div>
       </div> : <p>Loading...</p>}
     </>
