@@ -48,12 +48,10 @@ function ProductList() {
 
   return (
     <>
-      <header className='ProductsHeader'>
-        {/* Empty div for css spacing */}
-        <div/>
-        <h1>Products</h1>
+      <h1>Products</h1>
+      <div className='ProductListControls'>
         <SearchBox/>
-      </header>
+      </div>
       {productList ? <><div className="Products">
         {productList.products.map(product =>
           <ProductCard key={product.id} product={product} />
