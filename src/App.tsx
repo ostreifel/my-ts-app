@@ -5,11 +5,11 @@ import ProductDetails from './components/ProductDetails/ProductDetails';
 import './App.css';
 
 
-
 function App() {
   // TODO add navigation toolbar at top
   return (
     <BrowserRouter>
+      {/* For styling purposes. */}
       <div className="App">
         <Routes>
           <Route path="/" element={<ProductList />} />

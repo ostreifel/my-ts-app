@@ -6,4 +6,9 @@
   justify-content: center;
 }
 
+.PageButtons {
+  display: flex;
+  gap: 20px;
+}
+
 
