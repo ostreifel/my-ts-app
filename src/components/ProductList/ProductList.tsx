@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
-import {ProductList as ProductListData} from './schema'
-import Product from './Product';
+import {ProductList as ProductListData} from '../../schema'
+import Product from './Product/Product';
 
 import './ProductList.css';
 

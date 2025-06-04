@@ -1,6 +1,6 @@
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
-import ProductList from './ProductList';
-import ProductDetails from './ProductDetails';
+import ProductList from './components/ProductList/ProductList';
+import ProductDetails from './components/ProductDetails/ProductDetails';
 
 import './App.css';
 

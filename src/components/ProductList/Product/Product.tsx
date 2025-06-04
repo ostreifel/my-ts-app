@@ -1,4 +1,4 @@
-import {Product as ProductData} from './schema';
+import {Product as ProductData} from '../../../schema';
 import './Product.css';
 
 function Product({product}: {product: ProductData}) {

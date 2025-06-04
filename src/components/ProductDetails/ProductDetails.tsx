@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import {Product as ProductData} from './schema';
+import {Product as ProductData} from '../../schema';
 import {useParams} from 'react-router-dom';
 
 
