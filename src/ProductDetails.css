@@ -1,0 +1,10 @@
+.El {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding: 
+}
+
+.Image {
+    height: 300px;
+}

@@ -16,14 +16,14 @@ function ProductList() {
       });
   }, [])
   return (
-    <div className="ProductList">
+    <>
       <h1>Products</h1>
       {productList ? <div className="Products">
         {productList.products.map(product => 
           <Product product={product} />
         )}
         </div>: <p>Loading...</p>}
-    </div>
+    </>
   );
 }
 

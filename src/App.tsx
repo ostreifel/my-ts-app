@@ -10,11 +10,13 @@ function App() {
   // TODO add navigation toolbar at top
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<ProductList />} />
-        <Route path="/product/:id" element={<ProductDetails />} />
-        <Route path="*" element={<Navigate to="/" replace/>}/>
-      </Routes>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<ProductList />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
+          <Route path="*" element={<Navigate to="/" replace/>}/>
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

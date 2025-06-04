@@ -1,5 +1,5 @@
 # TODO
-- Product list
+- Product list ✔
 - Product details page
 - Add to cart
 - Cart page
