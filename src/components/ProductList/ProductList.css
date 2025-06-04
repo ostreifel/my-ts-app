@@ -1,15 +1,23 @@
+.ProductsHeader {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .Products {
   color: white;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center;
 }
 
 .PageButtons {
   display: flex;
   gap: 20px;
+  margin: 20px;
 }
+
 .HidePageButton {
   visibility: hidden;
 }

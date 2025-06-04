@@ -2,6 +2,7 @@ import {useSearchParams} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { ProductList as ProductListData } from '../../schema'
 import ProductCard from './ProductCard/ProductCard';
+import SearchBox from './SearchBox/SearchBox';
 
 import './ProductList.css';
 
@@ -47,16 +48,22 @@ function ProductList() {
 
   return (
     <>
-      <h1>Products</h1>
-      {productList ? <div className="Products">
+      <header className='ProductsHeader'>
+        {/* Empty div for css spacing */}
+        <div/>
+        <h1>Products</h1>
+        <SearchBox/>
+      </header>
+      {productList ? <><div className="Products">
         {productList.products.map(product =>
           <ProductCard key={product.id} product={product} />
         )}
-        <div className="PageButtons">
-          <a className={hasPreviousPage(productList) ? '': 'HidePageButton'} href={getPreviousPageUrl(productList)}>Previous Page</a>
-          <a className={hasNextPage(productList) ? '' : 'HidePageButton'} href={getNextPageUrl(productList)}>Next Page</a>
-        </div>
-      </div> : <p>Loading...</p>}
+      </div>
+      <div className="PageButtons">
+        <a className={hasPreviousPage(productList) ? '': 'HidePageButton'} href={getPreviousPageUrl(productList)}>Previous Page</a>
+        <a className={hasNextPage(productList) ? '' : 'HidePageButton'} href={getNextPageUrl(productList)}>Next Page</a>
+      </div></>
+       : <p>Loading...</p>}
     </>
   );
 }
