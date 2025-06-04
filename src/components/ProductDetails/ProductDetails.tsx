@@ -19,14 +19,13 @@ function ProductDetails() {
   }, [id])
 
   return (productData ? 
-      <><main className="El">
+      <main className="El">
         <h1>{productData.title}</h1>
         <p>{productData.description}</p>
         {productData.images.map(image => 
           <img className="Image" src={image}/>
         )}
-      </main>
-      <pre><code>{JSON.stringify(productData, null,2)}</code></pre></> :
+      </main> :
       <div>Loading...</div>);
 }
 
