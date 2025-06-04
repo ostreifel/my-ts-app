@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {ProductList as ProductListData} from '../../schema'
-import Product from './Product/Product';
+import ProductCard from './ProductCard/ProductCard';
 
 import './ProductList.css';
 
@@ -20,7 +20,7 @@ function ProductList() {
       <h1>Products</h1>
       {productList ? <div className="Products">
         {productList.products.map(product => 
-          <Product product={product} />
+          <ProductCard product={product} />
         )}
         </div>: <p>Loading...</p>}
     </>

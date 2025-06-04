@@ -1,7 +1,7 @@
 import {Product as ProductData} from '../../../schema';
-import './Product.css';
+import './ProductCard.css';
 
-function Product({product}: {product: ProductData}) {
+function ProductCard({product}: {product: ProductData}) {
   return (
     // TODO add an href here
     <a className="Product" href={`/product/${encodeURIComponent(product.id)}`}>
@@ -10,4 +10,4 @@ function Product({product}: {product: ProductData}) {
     </a>
   )
 }
-export default Product;
+export default ProductCard;
