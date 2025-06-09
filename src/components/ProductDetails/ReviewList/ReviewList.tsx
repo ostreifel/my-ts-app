@@ -10,6 +10,7 @@ interface ReviewListProps {
 function ReviewList({ reviews }: ReviewListProps): JSX.Element {
     return reviews.length > 0 ?
         <div className='ReviewList'>
+            <h2>Reviews</h2>
             {reviews.map(review => <Review review={review} />)}
         </div> : <></>;
 }
