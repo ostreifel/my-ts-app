@@ -1,9 +1,18 @@
-.ProductListControls {
+.ProductListHeader {
+  align-items: stretch;
   display: flex;
-  height: 24px;
-  justify-content: right;
-  margin-bottom: 4px;
+  justify-content: space-between;
   width: 100%;
+}
+.ProductListHeader > * {
+  flex: 1;
+}
+.SearchBoxWrapper {
+  align-items: flex-end;
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 20px;
+  
 }
 
 .Products {

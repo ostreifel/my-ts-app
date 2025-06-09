@@ -48,10 +48,14 @@ function ProductList() {
 
   return (
     <>
-      <h1>Products</h1>
-      <div className='ProductListControls'>
-        <SearchBox/>
-      </div>
+      <header className='ProductListHeader'>
+        {/* Empty div for css styling */}
+        <div></div>
+        <h1>Products</h1>
+        <div className='SearchBoxWrapper'>
+          <SearchBox/>
+        </div>
+      </header>
       {productList ? <><div className="Products">
         {productList.products.map(product =>
           <ProductCard key={product.id} product={product} />
