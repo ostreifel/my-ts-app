@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import {Product as ProductData} from '../../schema';
 import {useParams} from 'react-router-dom';
 
-
 import './ProductDetails.css';
+import ReviewList from './ReviewList/ReviewList';
 
 function ProductDetails() {
   const {id} = useParams()
@@ -25,6 +25,7 @@ function ProductDetails() {
         {productData.images.map(image => 
           <img className="Image" src={image}/>
         )}
+        <ReviewList reviews={productData.reviews} />
       </main> :
       <div>Loading...</div>);
 }
