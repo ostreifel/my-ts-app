@@ -1,4 +1,4 @@
-import {useSearchParams} from 'react-router-dom';
+import {useSearchParams, useNavigate} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { ProductList as ProductListData } from '../../schema'
 import ProductCard from './ProductCard/ProductCard';
@@ -37,12 +37,12 @@ function hasPreviousPage(productList: ProductListData): boolean {
   return productList.skip > 0;
 }
 
+
 function ProductList() {
   const [productList, setProductList] = useState<ProductListData | null>(null);
   const [searchParams] = useSearchParams();
-  // This may come from the search params later.
-  const [userQuery, setUserQuery] = useState<string>('');
   const skip = Number(searchParams.get('skip')) || 0;
+  const userQuery = searchParams.get('q') || '';
 
   useEffect(() => {
     const url = userQuery ? getUrl(0, userQuery) : getUrl(Number(skip));
@@ -53,6 +53,16 @@ function ProductList() {
       });
   }, [userQuery])
 
+  const navigate = useNavigate();
+  
+  function updateUrlForSearchQuery(query: string): void {
+    if (query) {
+      navigate(`/?q=${encodeURIComponent(query)}`, {replace: userQuery !== ''});
+    } else if (!query && userQuery) {
+      navigate('/');
+    }
+  }
+
   return (
     <>
       <header className='ProductListHeader'>
@@ -60,7 +70,7 @@ function ProductList() {
         <div></div>
         <h1>Products</h1>
         <div className='SearchBoxWrapper'>
-          <SearchBox searchUpdated={setUserQuery}/>
+          <SearchBox searchUpdated={updateUrlForSearchQuery}/>
         </div>
       </header>
       {productList ? <>
