@@ -8,7 +8,10 @@ import './ProductList.css';
 
 const PAGE_SIZE = 15;
 
-function getUrl(skip: number) {
+function getUrl(skip: number, userQuery?: string) {
+  if (userQuery) {
+    return `https://dummyjson.com/products/search?limit=${PAGE_SIZE}&q=${encodeURIComponent(userQuery)}`;
+  }
   if (!skip) {
     return `https://dummyjson.com/products?limit=${PAGE_SIZE}`;
   }
@@ -36,15 +39,18 @@ function hasPreviousPage(productList: ProductListData): boolean {
 function ProductList() {
   const [productList, setProductList] = useState<ProductListData | null>(null);
   const [searchParams] = useSearchParams();
+  // This may come from the search params later.
+  const [userQuery, setUserQuery] = useState<string>('');
   const skip = Number(searchParams.get('skip')) || 0;
 
   useEffect(() => {
-    fetch(getUrl(Number(skip)))
+    const url = userQuery ? getUrl(0, userQuery) : getUrl(Number(skip));
+    fetch(url)
       .then(response => response.json())
       .then((response) => {
         setProductList(response)
       });
-  }, [])
+  }, [userQuery])
 
   return (
     <>
@@ -53,18 +59,20 @@ function ProductList() {
         <div></div>
         <h1>Products</h1>
         <div className='SearchBoxWrapper'>
-          <SearchBox/>
+          <SearchBox searchUpdated={setUserQuery}/>
         </div>
       </header>
-      {productList ? <><div className="Products">
-        {productList.products.map(product =>
-          <ProductCard key={product.id} product={product} />
-        )}
-      </div>
-      <div className="PageButtons">
-        <a className={hasPreviousPage(productList) ? '': 'HidePageButton'} href={getPreviousPageUrl(productList)}>Previous Page</a>
-        <a className={hasNextPage(productList) ? '' : 'HidePageButton'} href={getNextPageUrl(productList)}>Next Page</a>
-      </div></>
+      {productList ? <>
+        <div className="Products">
+          {productList.products.map(product =>
+            <ProductCard key={product.id} product={product} />
+          )}
+        </div>
+        {userQuery ? null : <div className="PageButtons">
+          <a className={hasPreviousPage(productList) ? '': 'HidePageButton'} href={getPreviousPageUrl(productList)}>Previous Page</a>
+          <a className={hasNextPage(productList) ? '' : 'HidePageButton'} href={getNextPageUrl(productList)}>Next Page</a>
+        </div>}
+      </>
        : <p>Loading...</p>}
     </>
   );
