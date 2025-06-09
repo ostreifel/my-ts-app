@@ -3,9 +3,10 @@ import './SearchBox.css';
 
 interface SearchBoxProps {
   searchUpdated: (query: string) => void;
+  value?: string;
 }
 
-function SearchBox({searchUpdated}: SearchBoxProps): JSX.Element {
+function SearchBox({value, searchUpdated}: SearchBoxProps): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const searchInput = useRef<HTMLInputElement>(null);
 
@@ -22,13 +23,14 @@ function SearchBox({searchUpdated}: SearchBoxProps): JSX.Element {
 
   return isOpen ? (
     <input
+      autoFocus
       className='SearchBox'
-      placeholder='Enter search query'
-      ref={searchInput}
       onBlur={handleBlur}
       onKeyDown={inputChanged}
       onChange={inputChanged}
-      autoFocus></input>
+      placeholder='Enter search query'
+      ref={searchInput}
+      value={value}></input>
   ) : (
     <button className='SearchBoxButton' onClick={() => setIsOpen(true)}>🔎</button>
   );

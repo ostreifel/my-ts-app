@@ -7,7 +7,7 @@ import NoResults from './NoResults/NoResults';
 
 import './ProductList.css';
 
-const PAGE_SIZE = 15;
+const PAGE_SIZE = 16;
 
 function getUrl(skip: number, userQuery?: string) {
   if (userQuery) {
@@ -70,7 +70,7 @@ function ProductList() {
         <div></div>
         <h1>Products</h1>
         <div className='SearchBoxWrapper'>
-          <SearchBox searchUpdated={updateUrlForSearchQuery}/>
+          <SearchBox value={userQuery} searchUpdated={updateUrlForSearchQuery}/>
         </div>
       </header>
       {productList ? <>
