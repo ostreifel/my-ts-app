@@ -1,8 +1,9 @@
-.El {
+.ProductDetails {
   background-color: #383a3d;
   border-radius: 20px;
   color: white;
   padding: 20px;
+  width: 100%;
 }
 
 .Image {

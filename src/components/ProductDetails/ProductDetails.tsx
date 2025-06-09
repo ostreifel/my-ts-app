@@ -19,7 +19,7 @@ function ProductDetails() {
   }, [id])
 
   return (productData ? 
-      <main className="El">
+      <main className="ProductDetails">
         <h1>{productData.title}</h1>
         <p>{productData.description}</p>
         {productData.images.map(image => 
