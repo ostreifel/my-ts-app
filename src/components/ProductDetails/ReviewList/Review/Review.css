@@ -4,3 +4,11 @@
     color: black;
     padding: 20px;
 }
+
+.Reviewer {
+    font-weight: bold;
+}
+
+.ReviewRating {
+    font-style: italic;
+}

@@ -8,7 +8,11 @@ interface ReviewProps {
 }
 
 function Review({review}: ReviewProps): JSX.Element {
-    return <div className="Review">{review.comment}</div>;
+    return <div className="Review">
+        {review.comment}
+         {' - '}<span className="Reviewer">{review.reviewerName}</span>
+         {' '}<span className="ReviewRating">{review.rating}{'/5'}</span>
+         </div>;
 }
 
 export default Review;
