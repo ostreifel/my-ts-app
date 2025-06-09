@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { ProductList as ProductListData } from '../../schema'
 import ProductCard from './ProductCard/ProductCard';
 import SearchBox from './SearchBox/SearchBox';
+import NoResults from './NoResults/NoResults';
 
 import './ProductList.css';
 
@@ -64,9 +65,9 @@ function ProductList() {
       </header>
       {productList ? <>
         <div className="Products">
-          {productList.products.map(product =>
+          {productList.products.length > 0 ? productList.products.map(product =>
             <ProductCard key={product.id} product={product} />
-          )}
+          ) : <NoResults/>}
         </div>
         {userQuery ? null : <div className="PageButtons">
           <a className={hasPreviousPage(productList) ? '': 'HidePageButton'} href={getPreviousPageUrl(productList)}>Previous Page</a>
